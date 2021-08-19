@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trip_kit/screen/authenticate/user_info.dart';
 import 'package:trip_kit/services/auth.dart';
+import 'package:trip_kit/services/loading.dart';
 
 class Register extends StatefulWidget {
 
@@ -15,13 +17,13 @@ class _RegisterState extends State<Register> {
   String? _email;
   String? _password;
   String? _confirmPassword;
-  String? _name;
-  double? _phoneNumber;
+  bool loading = false;
 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+
+    return loading? Loading(): Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text('REGISTER',style: TextStyle(color: Colors.black),),
@@ -69,38 +71,23 @@ class _RegisterState extends State<Register> {
                     },
                   ),
                   SizedBox(height: 20),
-                  TextFormField(
-                    decoration: InputDecoration(
-                        hintText: 'Name'
-                    ),
-                    onChanged: (val) {
-                      setState(() {
-                        _name = val;
-                      });
-                    },
-                  ),
-                  SizedBox(height: 20),
-                  TextFormField(
-                    decoration: InputDecoration(
-                        hintText: 'Contact Number'
-                    ),
-                    onChanged: (val) {
-                      setState(() {
-                        _phoneNumber = double.parse(val);
-                      });
-                    },
-                  ),
-                  SizedBox(height: 20),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
 
                       ),
-                      onPressed: (){
-                        print(_email ?? 'null value in email');
-                        print(_password ?? 'null value in password');
-                        print(_phoneNumber ?? 'phone number is null');
-                        print(_name ?? 'name is null');
-                        AuthService().registerWithEmailAndPassword(_email!, _password!, _name!, _phoneNumber!);
+                      onPressed: ()async{
+                        loading = await Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (BuildContext context) => UserInfo(
+                              email: _email!,
+                              password: _password!,
+                            ),
+                            )
+                        );
+                        if(loading == true)
+                          setState(() {
+                            loading = true;
+                          });
                       },
                       child: Text('Proceed')
                   ),

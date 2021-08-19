@@ -9,7 +9,7 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-
+    //Stream which reads about the auth state of the app
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
