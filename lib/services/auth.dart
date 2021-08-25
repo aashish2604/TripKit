@@ -39,8 +39,4 @@ class AuthService{
   Future signOut()async{
     await _auth.signOut();
   }
-
-
-
-
 }

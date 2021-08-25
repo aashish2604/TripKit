@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trip_kit/services/auth.dart';
+import 'package:trip_kit/services/database.dart';
 
 class UserInfo extends StatefulWidget {
   final String email;
@@ -170,6 +171,7 @@ class _UserInfoState extends State<UserInfo> {
                           if (_formKey.currentState!.validate()) {
                             if (date!='Date of Birth' && selectedValue!=null) {
                               await AuthService().registerWithEmailAndPassword(widget.email, widget.password, _name!, _phoneNumber!);
+                              await Database().createInitialData(_phoneNumber!, _country!,date!, selectedValue!, _name!, _state!);
                               Navigator.pop(context,true);
                             }
                             else
