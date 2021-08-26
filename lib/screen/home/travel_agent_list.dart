@@ -20,7 +20,7 @@ class _TravelListState extends State<TravelList> {
         stream: _agentList,
         builder: (BuildContext context,AsyncSnapshot<QuerySnapshot> snapshot) {
           if(snapshot.hasError)
-            print(snapshot.error);
+            print(snapshot.error.toString());
 
           if (snapshot.hasData) {
             print('snapshot had data');
@@ -36,8 +36,10 @@ class _TravelListState extends State<TravelList> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (BuildContext context) => Chat(
-                              name: data['name']
-                            ))
+                              name: data['name'],
+                              recieverUid: document.id,
+                              )
+                            )
                           );
                         }
                       ),
@@ -62,30 +64,4 @@ class _TravelListState extends State<TravelList> {
       );
   }
 }
-
-
-      // body: ListView(
-      //   children: [
-      //     Card(
-      //       child: ListTile(
-      //         title: Text('Make my trip'),
-      //         onTap: (){
-      //           Navigator.push(context,
-      //           MaterialPageRoute(builder: (BuildContext context) => Chat())
-      //           );
-      //         },
-      //       ),
-      //     ),
-      //     Card(
-      //       child: ListTile(
-      //         title: Text('Trivago'),
-      //         onTap: (){
-      //           Navigator.push(context,
-      //               MaterialPageRoute(builder: (BuildContext context) => Chat())
-      //           );
-      //         },
-      //       ),
-      //     ),
-      //   ],
-      // ),
 
