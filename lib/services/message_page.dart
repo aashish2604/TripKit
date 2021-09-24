@@ -35,17 +35,17 @@ class _MessagePageState extends State<MessagePage> {
               children: [
                 Container(
                   padding: EdgeInsets.all(16),
-                  margin: EdgeInsets.all(16),
-                  constraints: BoxConstraints(maxWidth: 200),
+                  margin: EdgeInsets.all(8),
+                  constraints: BoxConstraints(maxWidth: 300),
                   decoration: BoxDecoration(
                     borderRadius: isMe
                     ? BorderRadius.only(
-                      topLeft: Radius.circular(30), topRight: Radius.circular(30),bottomLeft: Radius.circular(30))
+                      topLeft: Radius.circular(15), topRight: Radius.circular(15),bottomLeft: Radius.circular(15))
                     : BorderRadius.only(
-                        topLeft: Radius.circular(30), topRight: Radius.circular(30),bottomRight: Radius.circular(30)),
+                        topLeft: Radius.circular(15), topRight: Radius.circular(15),bottomRight: Radius.circular(15)),
                     color: isMe? Colors.blue: Colors.red,
                   ),
-                  child: Text(data['message']),
+                  child: Text(data['message'],style: TextStyle(fontSize: 17),),
                 )
               ],
             );

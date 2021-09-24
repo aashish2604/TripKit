@@ -1,0 +1,335 @@
+[
+    {
+      "slno": 0,
+      "abb": "AN",
+      "lat": "11.66702557",
+      "lon": "92.73598262",
+      "size": "51242",
+      "name": "Andaman and Nicobar Islands",
+      "state": "andaman-and-nicobar"
+    },
+    {
+      "slno": 1,
+      "abb": "AP",
+      "lat": "14.7504291",
+      "lon": "78.57002559",
+      "size": "227759",
+      "name": "Andhra Pradesh",
+      "state": "andhra-pradesh"
+    },
+    {
+      "slno": 2,
+      "abb": "AR",
+      "lat": "27.10039878",
+      "lon": "93.61660071",
+      "size": "163267",
+      "name": "Arunachal Pradesh",
+      "state": "arunachal-pradesh"
+    },
+    {
+      "slno": 3,
+      "abb": "AS",
+      "lat": "26.7499809",
+      "lon": "94.21666744",
+      "size": "158011",
+      "name": "Assam",
+      "state": "assam"
+    },
+    {
+      "slno": 4,
+      "abb": "BR",
+      "lat": "25.78541445",
+      "lon": "87.4799727",
+      "size": "173127",
+      "name": "Bihar",
+      "state": "bihar"
+    },
+    {
+      "slno": 5,
+      "abb": "CG",
+      "lat": "30.71999697",
+      "lon": "76.78000565",
+      "size": "6024",
+      "name": "Chandigarh",
+      "state": "chandigarh"
+    },
+    {
+      "slno": 6,
+      "abb": "CH",
+      "lat": "22.09042035",
+      "lon": "82.15998734",
+      "size": "207443",
+      "name": "Chhattisgarh",
+      "state": "chattishgarh"
+    },
+    {
+      "slno": 7,
+      "abb": "DH",
+      "lat": "20.26657819",
+      "lon": "73.0166178",
+      "size": "12502",
+      "name": "Dadra and Nagar Haveli",
+      "state": "dadra-and-nagar"
+    },
+    {
+      "slno": 8,
+      "abb": "DD",
+      "lat": "20.2270",
+      "lon": "73.0169",
+      "size": "3568",
+      "name": "Daman and Diu",
+      "state": "daman-and-diu"
+    },
+    {
+      "slno": 9,
+      "abb": "DL",
+      "lat": "28.6699929",
+      "lon": "77.23000403",
+      "size": "21734",
+      "name": "Delhi",
+      "state": "delhi"
+    },
+    {
+      "slno": 10,
+      "abb": "GA",
+      "lat": "15.491997",
+      "lon": "73.81800065",
+      "size": "34328",
+      "name": "Goa",
+      "state": "goa"
+    },
+    {
+      "slno": 11,
+      "abb": "GJ",
+      "lat": "22.2587",
+      "lon": "71.1924",
+      "size": "249793",
+      "name": "Gujarat",
+      "state": "gujrat"
+    },
+    {
+      "slno": 12,
+      "abb": "HR",
+      "lat": "28.45000633",
+      "lon": "77.01999101",
+      "size": "118630",
+      "name": "Haryana",
+      "state": "haryana"
+    },
+    {
+      "slno": 13,
+      "abb": "HP",
+      "lat": "31.10002545",
+      "lon": "77.16659704",
+      "size": "133121",
+      "name": "Himachal Pradesh",
+      "state": "himachal-pradesh"
+    },
+    {
+      "slno": 14,
+      "abb": "JK",
+      "lat": "34.29995933",
+      "lon": "74.46665849",
+      "size": "265970",
+      "name": "Jammu and Kashmir",
+      "state": "jammu-and-kashmir"
+    },
+    {
+      "slno": 15,
+      "abb": "JH",
+      "lat": "23.80039349",
+      "lon": "86.41998572",
+      "size": "159291",
+      "name": "Jharkhand",
+      "state": "jharkhand"
+    },
+    {
+      "slno": 16,
+      "abb": "KA",
+      "lat": "12.57038129",
+      "lon": "76.91999711",
+      "size": "247080",
+      "name": "Karnataka",
+      "state": "karnataka"
+    },
+    {
+      "slno": 17,
+      "abb": "KL",
+      "lat": "8.900372741",
+      "lon": "76.56999263",
+      "size": "111222",
+      "name": "Kerala",
+      "state": "kerala"
+    },
+    {
+      "slno": 36,
+      "abb": "LA",
+      "lat": "34.2268",
+      "lon": "77.5619",
+      "size": "137211",
+      "name": "Ladakh",
+      "state": "ladakh"
+    },
+    {
+      "slno": 18,
+      "abb": "LD",
+      "lat": "10.56257331",
+      "lon": "72.63686717",
+      "size": "3241",
+      "name": "Lakshadweep",
+      "state": "lakshadweep"
+    },
+    {
+      "slno": 19,
+      "abb": "MP",
+      "lat": "21.30039105",
+      "lon": "76.13001949",
+      "size": "313237",
+      "name": "Madhya Pradesh",
+      "state": "madhya-pradesh"
+    },
+    {
+      "slno": 20,
+      "abb": "MH",
+      "lat": "19.25023195",
+      "lon": "73.16017493",
+      "size": "312967",
+      "name": "Maharashtra",
+      "state": "maharashtra"
+    },
+    {
+      "slno": 21,
+      "abb": "MN",
+      "lat": "24.79997072",
+      "lon": "93.95001705",
+      "size": "84302",
+      "name": "Manipur",
+      "state": "manipur"
+    },
+    {
+      "slno": 22,
+      "abb": "ML",
+      "lat": "25.57049217",
+      "lon": "91.8800142",
+      "size": "84495",
+      "name": "Meghalaya",
+      "state": "meghalaya"
+    },
+    {
+      "slno": 23,
+      "abb": "MZ",
+      "lat": "23.71039899",
+      "lon": "92.72001461",
+      "size": "81916",
+      "name": "Mizoram",
+      "state": "mizoram"
+    },
+    {
+      "slno": 24,
+      "abb": "NL",
+      "lat": "25.6669979",
+      "lon": "94.11657019",
+      "size": "72645",
+      "name": "Nagaland",
+      "state": "nagaland"
+    },
+    {
+      "slno": 25,
+      "abb": "OR",
+      "lat": "19.82042971",
+      "lon": "85.90001746",
+      "size": "222628",
+      "name": "Odisha",
+      "state": "odhisha"
+    },
+    {
+      "slno": 26,
+      "abb": "PY",
+      "lat": "11.93499371",
+      "lon": "79.83000037",
+      "size": "12348",
+      "name": "Puducherry",
+      "state": "puducherry"
+    },
+    {
+      "slno": 27,
+      "abb": "PB",
+      "lat": "31.51997398",
+      "lon": "75.98000281",
+      "size": "126612",
+      "name": "Punjab",
+      "state": "punjab"
+    },
+    {
+      "slno": 28,
+      "abb": "RJ",
+      "lat": "26.44999921",
+      "lon": "74.63998124",
+      "size": "330058",
+      "name": "Rajasthan",
+      "state": "rajasthan"
+    },
+    {
+      "slno": 29,
+      "abb": "SK",
+      "lat": "27.3333303",
+      "lon": "88.6166475",
+      "size": "47526",
+      "name": "Sikkim",
+      "state": "sikkim"
+    },
+    {
+      "slno": 30,
+      "abb": "TN",
+      "lat": "12.92038576",
+      "lon": "79.15004187",
+      "size": "203467",
+      "name": "Tamil Nadu",
+      "state": "tamil-nadu"
+    },
+    {
+      "slno": 31,
+      "abb": "TS",
+      "lat": "18.1124",
+      "lon": "79.0193",
+      "size": "188879",
+      "name": "Telangana",
+      "state": "telangana"
+    },
+    {
+      "slno": 32,
+      "abb": "TR",
+      "lat": "23.83540428",
+      "lon": "91.27999914",
+      "size": "57774",
+      "name": "Tripura",
+      "state": "tripura"
+    },
+    {
+      "slno": 33,
+      "abb": "UK",
+      "lat": "27.59998069",
+      "lon": "78.05000565",
+      "size": "276929",
+      "name": "Uttar Pradesh",
+      "state": "uttar-pradesh"
+    },
+    {
+      "slno": 34,
+      "abb": "UP",
+      "lat": "30.32040895",
+      "lon": "78.05000565",
+      "size": "130477",
+      "name": "Uttarakhand",
+      "state": "uttarakhand"
+    },
+    {
+      "slno": 35,
+      "abb": "WB",
+      "lat": "22.58039044",
+      "lon": "88.32994665",
+      "size": "168079",
+      "name": "West Bengal",
+      "state": "west-bengal"
+    }
+  ]
