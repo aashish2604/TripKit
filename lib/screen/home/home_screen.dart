@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trip_kit/screen/home/india_states.dart';
 import 'package:trip_kit/screen/home/location.dart';
 import 'package:trip_kit/screen/home/organiser.dart';
 import 'package:trip_kit/screen/home/travel_agent_list.dart';
@@ -34,7 +35,7 @@ class _HomeState extends State<Home> {
         ),
         body: TabBarView(
             children: [
-              Location(),
+              StatesIndia(),
               Text('Wish List'),
               TravelList(),
             ]

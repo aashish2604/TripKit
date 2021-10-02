@@ -38,8 +38,8 @@
     {
       "slno": 4,
       "abb": "BR",
-      "lat": "25.78541445",
-      "lon": "87.4799727",
+      "lat": "25.5941",
+      "lon": "85.1376",
       "size": "173127",
       "name": "Bihar",
       "state": "bihar"
@@ -119,8 +119,8 @@
     {
       "slno": 13,
       "abb": "HP",
-      "lat": "31.10002545",
-      "lon": "77.16659704",
+      "lat": "32.015034",
+      "lon": "77.347824",
       "size": "133121",
       "name": "Himachal Pradesh",
       "state": "himachal-pradesh"
