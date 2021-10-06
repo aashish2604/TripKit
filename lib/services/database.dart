@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class Database{
   final CollectionReference collectionReference= FirebaseFirestore.instance.collection('users');
   final CollectionReference plannerData = FirebaseFirestore.instance.collection('plans');
+  final CollectionReference wishList = FirebaseFirestore.instance.collection('wishlist');
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   // making database for newly registered users
@@ -34,7 +35,21 @@ class Database{
     });
   }
 
+ Future? wishListAdd(String name,String xid)async{
+    User? user = auth.currentUser;
+    String uid = user!.uid;
+    return await wishList.doc('$uid-$xid').set({
+      'name': name,
+      'uid': uid,
+      'xid': xid,
+    });
+ }
 
+ Future? wishListRemove(String xid)async{
+    User? user = auth.currentUser;
+    String uid = user!.uid;
+    return await wishList.doc('$uid-$xid').delete();
+ }
 
   // delete data from database
 

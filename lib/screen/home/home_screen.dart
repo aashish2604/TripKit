@@ -3,6 +3,7 @@ import 'package:trip_kit/screen/home/india_states.dart';
 import 'package:trip_kit/screen/home/location.dart';
 import 'package:trip_kit/screen/home/organiser.dart';
 import 'package:trip_kit/screen/home/travel_agent_list.dart';
+import 'package:trip_kit/screen/home/wishlist.dart';
 import 'package:trip_kit/services/auth.dart';
 
 class Home extends StatefulWidget {
@@ -36,7 +37,7 @@ class _HomeState extends State<Home> {
         body: TabBarView(
             children: [
               StatesIndia(),
-              Text('Wish List'),
+              WishList(),
               TravelList(),
             ]
         )
