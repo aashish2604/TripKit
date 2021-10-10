@@ -4,6 +4,7 @@ import 'package:trip_kit/screen/home/location.dart';
 import 'package:trip_kit/screen/home/organiser.dart';
 import 'package:trip_kit/screen/home/travel_agent_list.dart';
 import 'package:trip_kit/screen/home/wishlist.dart';
+import 'package:trip_kit/screen/navigation/navigation_drawer.dart';
 import 'package:trip_kit/services/auth.dart';
 
 class Home extends StatefulWidget {
@@ -19,13 +20,10 @@ class _HomeState extends State<Home> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        drawer: NavigationDrawer(),
         appBar: AppBar(
           title: Text('Trip Kit'),
-          actions: [
-            TextButton(onPressed: () => AuthService().signOut(),
-                child: Text('Sign Out',style: TextStyle(color: Colors.white),)
-            )
-          ],
+
           bottom: TabBar(
             tabs: [
               Tab(text: 'Location',icon: Icon(Icons.location_on),),

@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:trip_kit/services/database.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SpotData extends StatefulWidget {
 
@@ -36,6 +37,8 @@ class _SpotDataState extends State<SpotData> {
     isliked= doc.exists;
   }
 
+  void launchURL(String _url) async =>
+      await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
 
  @override
   void initState(){
@@ -135,7 +138,7 @@ class _SpotDataState extends State<SpotData> {
                             margin: EdgeInsets.all(4),
                             height: 30,
                             child: OutlinedButton(
-                              onPressed: (){},
+                              onPressed: (){launchURL(apiData!['wikipedia']);},
                               child: Text('Know more'),
                               style: OutlinedButton.styleFrom(
                                 primary: Colors.red,

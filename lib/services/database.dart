@@ -51,6 +51,8 @@ class Database{
     return await wishList.doc('$uid-$xid').delete();
  }
 
+
+
   // delete data from database
 
 

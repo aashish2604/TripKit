@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:trip_kit/screen/home/spot_data.dart';
 
 class WishList extends StatefulWidget {
   const WishList({Key? key}) : super(key: key);
@@ -9,10 +10,7 @@ class WishList extends StatefulWidget {
   _WishListState createState() => _WishListState();
 }
 
-bool noWishList = true;
-
 class _WishListState extends State<WishList> {
-
   @override
   Widget build(BuildContext context) {
     final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -32,13 +30,16 @@ class _WishListState extends State<WishList> {
                 return Card(
                   child: ListTile(
                     title: Text(document['name']),
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>SpotData(xid: document['xid'])));
+                    },
                   ),
                 );
               }
-              else
-                return Text('Nothing in the wishlist');
+              else {
+                return SizedBox.shrink();
+              }
             },
-
           );
         }
     );
