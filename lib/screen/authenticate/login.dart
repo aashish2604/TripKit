@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trip_kit/screen/authenticate/aurhenticate.dart';
 import 'package:trip_kit/services/auth.dart';
@@ -15,135 +16,169 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   String? _email;
   String? _password;
+  bool _isHidden = true;
+
+  void _togglePasswordView() {
+    setState(() {
+      _isHidden = !_isHidden;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    double width=MediaQuery.of(context).size.width;
+    double height=MediaQuery.of(context).size.height;
+
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('LOGIN',style: TextStyle(color: Colors.black),),
-        elevation: 3,
-        backgroundColor: Colors.transparent,
-      ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(10,30,10,0),
-          child: Form(
-            key: _formKey,
-              child: Column(
-                children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: 'Email'
+        child: Container(
+          height: height*1,
+          decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/auth.jpg'),fit: BoxFit.fill)),
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(width*0.05,30,width*0.05,0),
+            child: Form(
+              key: _formKey,
+                child: Column(
+                  children: [
+                    Container(
+                      height: height*0.38,
                     ),
-                  onChanged: (val) {
-                      setState(() {
-                        _email = val;
-                      });
-                    },
-                  ),
-                  SizedBox(height: 20),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        hintText: 'Password'
-                    ),
-                    onChanged: (val) {
-                      setState(() {
-                        _password = val;
-                      });
-                    },
-                  ),
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-
-                    ),
-                      onPressed: ()async{
-                        await AuthService().signInWithEmailAndPassword(_email!, _password!);
-                      },
-                      child: Text('Login')
-                  ),
-                  SizedBox(height: 10),
-
-                  ///Adding the OR with horizontal line on each side
-                  Row(children: <Widget>[
-                    Expanded(
-                      child: new Container(
-                          margin: const EdgeInsets.only(left: 10.0, right: 15.0),
-                          child: Divider(
-                            color: Colors.black,
-                            height: 50,
-                          )),
-                    ),
-
-                    Text("Or Sign In using"),
-
-                    Expanded(
-                      child: new Container(
-                          margin: const EdgeInsets.only(left: 15.0, right: 10.0),
-                          child: Divider(
-                            color: Colors.black,
-                            height: 50,
-                          )),
-                    ),
-                  ]
-                ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton.icon(
-                        icon: Icon(Icons.email_outlined,color: Colors.white,),
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.red,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))
+                    Container(
+                      child: Column(
+                        children: [
+                          Text('LOGIN',style: TextStyle(fontSize: 30,color: Colors.black),),
+                          SizedBox(height: height*0.01),
+                          TextFormField(
+                            cursorColor: Colors.white,
+                            style: TextStyle(color: Colors.white,fontSize: 19),
+                            decoration: InputDecoration(
+                              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white,width: 2)),
+                                hintStyle: TextStyle(fontSize: 19, color: Colors.white60),
+                              hintText: 'Email'
+                            ),
+                          onChanged: (val) {
+                              setState(() {
+                                _email = val;
+                              });
+                            },
                           ),
-                          onPressed: (){
-                            print('Login using gmail account');
-                          },
-                          label: Text('Gmail',style: TextStyle(color: Colors.white)),
-                      ),
-                      SizedBox(width: 10),
-                      ElevatedButton.icon(
-                        icon: Icon(Icons.facebook_rounded,color: Colors.white,),
-                        style: ElevatedButton.styleFrom(
-                            primary: Colors.blue,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))
-                        ),
-                        onPressed: (){
-                          print('Login using facebook account');
-                        },
-                        label: Text('Facebook',style: TextStyle(color: Colors.white)),
-                      ),
-                      SizedBox(width: 10),
-                      ElevatedButton.icon(
-                        icon: Icon(Icons.map,color: Colors.white,),
-                        style: ElevatedButton.styleFrom(
-                            primary: Colors.blue,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))
-                        ),
-                        onPressed: (){
-                          print('Login using twitter account');
-                        },
-                        label: Text('Twitter',style: TextStyle(color: Colors.white)),
-                      ),
-                    ],
+                          SizedBox(height: 20),
+                          TextFormField(
+                            cursorColor: Colors.white,
+                            style: TextStyle(color: Colors.white,fontSize: 19),
+                            obscureText: _isHidden,
+                            decoration: InputDecoration(
+                              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white,width: 2)),
+                              hintStyle: TextStyle(fontSize: 19, color: Colors.white60),
+                                hintText: 'Password',
+                                suffix: InkWell(
+                                  onTap: _togglePasswordView,
+                                  child: Icon(
+                                    _isHidden
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,color: Colors.grey,
+                                  ),
+                                ),
+                            ),
+                            onChanged: (val) {
+                              setState(() {
+                                _password = val;
+                              });
+                            },
+                          ),
+                          SizedBox(height: 20),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                            ),
+                              onPressed: ()async{
+                                await AuthService().signInWithEmailAndPassword(_email!, _password!);
+                              },
+                              child: Text('Login')
+                          ),
+                          SizedBox(height: 10),
+
+                          ///Adding the OR with horizontal line on each side
+                          Row(children: <Widget>[
+                            Expanded(
+                              child: new Container(
+                                  margin: const EdgeInsets.only(left: 10.0, right: 15.0),
+                                  child: Divider(
+                                    color: Colors.white70,
+                                    height: 50,
+                                  )),
+                            ),
+
+                            Text("Or Sign In using",style: TextStyle( color: Colors.white70),),
+
+                            Expanded(
+                              child: new Container(
+                                  margin: const EdgeInsets.only(left: 15.0, right: 10.0),
+                                  child: Divider(
+                                    color: Colors.white70,
+                                    height: 50,
+                                  )),
+                            ),
+                          ]
                   ),
-                  SizedBox(height: 240),
-                  Text('New User? Register'),
-                  SizedBox(height: 5),
-                  ElevatedButton(
-                      onPressed: () {
-                        widget.toggleView();
-                      },
-                      child: Text('Create new Account')
-                  ),
-              ],
-            )
+                          SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton.icon(
+                                icon: Icon(Icons.email_outlined,color: Colors.white,),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.red,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))
+                                  ),
+                                  onPressed: (){
+                                    print('Login using gmail account');
+                                  },
+                                  label: Text('Gmail',style: TextStyle(color: Colors.white)),
+                              ),
+                              SizedBox(width: 10),
+                              ElevatedButton.icon(
+                                icon: Icon(Icons.facebook_rounded,color: Colors.white,),
+                                style: ElevatedButton.styleFrom(
+                                    primary: Colors.blue,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))
+                                ),
+                                onPressed: (){
+                                  print('Login using facebook account');
+                                },
+                                label: Text('Facebook',style: TextStyle(color: Colors.white)),
+                              ),
+                              SizedBox(width: 10),
+                              ElevatedButton.icon(
+                                icon: Icon(Icons.map,color: Colors.white,),
+                                style: ElevatedButton.styleFrom(
+                                    primary: Colors.blue,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))
+                                ),
+                                onPressed: (){
+                                  print('Login using twitter account');
+                                },
+                                label: Text('Twitter',style: TextStyle(color: Colors.white)),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: height*0.04),
+                          Text('New User? Register',style: TextStyle( color: Colors.white70),),
+                          SizedBox(height: 5),
+                          ElevatedButton(
+                              onPressed: () {
+                                widget.toggleView();
+                              },
+                              child: Text('Create new Account')
+                          ),
+                        ],
+                      ),
+                    ),
+                ],
+              )
+
+            ),
 
           ),
-
         ),
       ),
     );

@@ -19,11 +19,17 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     User? user = FirebaseAuth.instance.currentUser;
     String uid = user!.uid;
 
+    Widget text(AsyncSnapshot snapshots){
+      String _name = snapshots.data.get('name');
+      return Text(_name,style: TextStyle(fontSize:20 ,color: Colors.white));
+
+    }
+
     return StreamBuilder<DocumentSnapshot>(
       stream: FirebaseFirestore.instance.collection('users').doc(uid).snapshots(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        String _name = snapshot.data.get('name');
-        return Drawer(
+        bool isLoaded= snapshot.hasData;
+        return isLoaded?Drawer(
           child: Material(
             color: Color.fromRGBO(45, 64, 184, 1),
             child: ListView(
@@ -51,7 +57,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(_name,style: TextStyle(fontSize:20 ,color: Colors.white)),
+                            text(snapshot),
                             SizedBox(height: 5),
                             Text('${user.email}',style: TextStyle(color: Colors.grey)),
                           ],
@@ -61,7 +67,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   ),
                 ),
                 SizedBox(height: height*0.01),
-
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
+                  child: Divider(color: Colors.indigo,thickness: 1.2,),
+                ),
                 //MyPlans
                 ListTile(
                   leading: Icon(Icons.assignment,color: Colors.white),
@@ -79,7 +88,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               ],
             ),
           ),
-        );
+        ):Text('Loading');
       }
     );
   }

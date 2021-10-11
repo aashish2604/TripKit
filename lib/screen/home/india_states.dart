@@ -18,7 +18,7 @@ class _StatesIndiaState extends State<StatesIndia> {
           future: DefaultAssetBundle.of(context).loadString("assets/indian-states-coordinates.json"),
             builder: (context,snapshot){
               var data = jsonDecode(snapshot.data.toString());
-              return ListView.builder(
+              return data==null?Text('Loading'): ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (BuildContext context,int index){
                   return Card(
