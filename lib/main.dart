@@ -13,6 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Colors.orange),
+        elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(primary: Colors.orange)),
+      ),
       home: Wrapper(),
     );
   }

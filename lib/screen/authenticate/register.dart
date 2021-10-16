@@ -19,11 +19,20 @@ class _RegisterState extends State<Register> {
   String? _confirmPassword;
   bool loading = false;
   bool _isHidden = true;
+  String errorMessage='';
 
   void _togglePasswordView() {
     setState(() {
       _isHidden = !_isHidden;
     });
+  }
+
+  Widget ErrorMessage(){
+    if(errorMessage!=''){
+      return SizedBox(child: Padding(padding: EdgeInsets.all(5),child: Text(errorMessage,style: TextStyle(color: Colors.red),),),);
+    }
+    else
+      return SizedBox.shrink();
   }
 
 
@@ -35,7 +44,6 @@ class _RegisterState extends State<Register> {
     return loading? Loading(): Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: height*1,
           decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/auth.jpg'),fit: BoxFit.fill)),
           child: Padding(
             padding:  EdgeInsets.fromLTRB(width*0.05,30,width*0.05,0),
@@ -47,6 +55,7 @@ class _RegisterState extends State<Register> {
                     Text('Register',style: TextStyle(fontSize: 30,color: Colors.black),),
                     SizedBox(height: height*0.01),
                     TextFormField(
+                      validator: (val)=>val!.isEmpty?'This is a required field': null,
                       cursorColor: Colors.white,
                       style: TextStyle(color: Colors.white,fontSize: 19),
                       decoration: InputDecoration(
@@ -62,12 +71,13 @@ class _RegisterState extends State<Register> {
                     ),
                     SizedBox(height: height*0.02),
                     TextFormField(
+                      validator: (val)=>val!.isEmpty?'This is a required field': null,
                       cursorColor: Colors.white,
                       style: TextStyle(color: Colors.white,fontSize: 19),
                       obscureText: _isHidden,
                       decoration: InputDecoration(
                           focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white,width: 2)),
-                          hintStyle: TextStyle(fontSize: 19, color: Colors.white60),
+                          hintStyle: TextStyle(fontSize: 19, color: Colors.white70),
                           hintText: 'Password',
                         suffix: InkWell(
                           onTap: _togglePasswordView,
@@ -86,6 +96,7 @@ class _RegisterState extends State<Register> {
                     ),
                     SizedBox(height: height*0.02),
                     TextFormField(
+                      validator: (val)=>val!.isEmpty?'This is a required field': null,
                       cursorColor: Colors.white,
                       style: TextStyle(color: Colors.white,fontSize: 19),
                       decoration: InputDecoration(
@@ -102,24 +113,37 @@ class _RegisterState extends State<Register> {
                     SizedBox(height: height*0.02),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
-
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                            elevation: 5
                         ),
                         onPressed: ()async{
-                          loading = await Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (BuildContext context) => UserInfo(
-                                email: _email!,
-                                password: _password!,
-                              ),
-                              )
-                          );
-                          if(loading == true)
-                            setState(() {
-                              loading = true;
-                            });
+                          if (_formKey.currentState!.validate()) {
+                            if (_password==_confirmPassword) {
+                              loading = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (BuildContext context) => UserInfo(
+                                    email: _email!,
+                                    password: _password!,
+                                  ),
+                                  )
+                              );
+                              if(loading == true)
+                                setState(() {
+                                  loading = true;
+                                });
+                            }
+                            else{ setState(() {
+                               errorMessage='Password and confirm password should be the same!';
+                             });
+                            }
+                          }
                         },
-                        child: Text('Proceed')
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 12),
+                          child: Text('Proceed'),
+                        )
                     ),
+                    ErrorMessage(),
                     SizedBox(height: height*0.01),
 
                     ///Adding the OR with horizontal line on each side
@@ -195,6 +219,7 @@ class _RegisterState extends State<Register> {
                         },
                         child: Text('Sign In')
                     ),
+                    SizedBox(height: height*0.0235),
                   ],
                 )
 

@@ -42,6 +42,15 @@ class _SpotListState extends State<SpotList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.red,Colors.orange],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+          ),
           title: Text('Famous places in ${widget.name}'),
         ),
         body: apiData==null? Center(child: Text('Loading...'),): ListView.builder(

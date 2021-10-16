@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trip_kit/screen/home/india_states.dart';
 import 'package:trip_kit/screen/home/location.dart';
@@ -23,7 +24,15 @@ class _HomeState extends State<Home> {
         drawer: NavigationDrawer(),
         appBar: AppBar(
           title: Text('Trip Kit'),
-
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.red,Colors.orange],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+          ),
           bottom: TabBar(
             tabs: [
               Tab(text: 'Location',icon: Icon(Icons.location_on),),

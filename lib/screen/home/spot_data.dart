@@ -55,6 +55,15 @@ class _SpotDataState extends State<SpotData> {
     return apiData==null || isliked==null?Text('Loading..'): Scaffold(
       appBar: AppBar(
         title:Text('Location Details'),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.red,Colors.orange],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
       ),
       body: Container(
         child: SingleChildScrollView(
@@ -81,7 +90,7 @@ class _SpotDataState extends State<SpotData> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text('Address:'),
-                            SizedBox(width: width*0.07),
+                            SizedBox(width: width*0.18),
                             apiData!['address']['suburb']==null? Expanded(child: Text('${apiData!['address']['city']}, ${apiData!['address']['state']}-${apiData!['address']['postcode']}.')) : Expanded(child: Text('${apiData!['address']['suburb']}, ${apiData!['address']['city']}, ${apiData!['address']['state']}-${apiData!['address']['postcode']}.')),
                           ],
                         ),
@@ -94,6 +103,7 @@ class _SpotDataState extends State<SpotData> {
                             Expanded(child: Text('${apiData!['wikipedia_extracts']['text']}',textAlign: TextAlign.end,))
                           ],
                         ),
+                        SizedBox(height: height*0.03)
                       ],
                     ),
                   )
@@ -110,7 +120,7 @@ class _SpotDataState extends State<SpotData> {
                   padding: EdgeInsets.fromLTRB(width*0.05, width*0.02, width*0.05, 2),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(30)),
-                    color: Colors.blue,
+                    color: Colors.orange,
                     boxShadow: [BoxShadow(
                       color: Colors.black54,
                       blurRadius: 2.0,
@@ -130,8 +140,8 @@ class _SpotDataState extends State<SpotData> {
                           SizedBox(
                             height: 30,
                             child: FloatingActionButton(onPressed: (){},
-                              backgroundColor: Colors.red,
-                              child: Icon(Icons.location_on),),
+                              backgroundColor: Colors.yellow,
+                              child: Icon(Icons.location_on,color: Colors.redAccent,)),
                           ),
                           SizedBox(width: width*0.01),
                           Container(
@@ -141,8 +151,8 @@ class _SpotDataState extends State<SpotData> {
                               onPressed: (){launchURL(apiData!['wikipedia']);},
                               child: Text('Know more'),
                               style: OutlinedButton.styleFrom(
-                                primary: Colors.red,
-                                side: BorderSide(color: Colors.red,)
+                                primary: Colors.yellow,
+                                side: BorderSide(color: Colors.yellow,)
                               ),
                             ),
                           ),
@@ -163,7 +173,7 @@ class _SpotDataState extends State<SpotData> {
                                   });
 
                                 },
-                                icon: isliked! ? Icon(Icons.favorite,color: Colors.red,): Icon(Icons.favorite_outline,color: Colors.grey,)
+                                icon: isliked! ? Icon(Icons.favorite,color: Colors.red,): Icon(Icons.favorite_outline,color: Colors.yellow,)
                             ),
                           )
                         ],

@@ -32,7 +32,6 @@ class _LoginState extends State<Login> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: height*1,
           decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/auth.jpg'),fit: BoxFit.fill)),
           child: Padding(
             padding: EdgeInsets.fromLTRB(width*0.05,30,width*0.05,0),
@@ -49,11 +48,12 @@ class _LoginState extends State<Login> {
                           Text('LOGIN',style: TextStyle(fontSize: 30,color: Colors.black),),
                           SizedBox(height: height*0.01),
                           TextFormField(
+                            validator: (val)=>val!.isEmpty?'Enter email':null,
                             cursorColor: Colors.white,
                             style: TextStyle(color: Colors.white,fontSize: 19),
                             decoration: InputDecoration(
                               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white,width: 2)),
-                                hintStyle: TextStyle(fontSize: 19, color: Colors.white60),
+                                hintStyle: TextStyle(fontSize: 19, color: Colors.white70),
                               hintText: 'Email'
                             ),
                           onChanged: (val) {
@@ -67,9 +67,10 @@ class _LoginState extends State<Login> {
                             cursorColor: Colors.white,
                             style: TextStyle(color: Colors.white,fontSize: 19),
                             obscureText: _isHidden,
+                            validator: (val)=> val!.isEmpty?'Enter Password':null,
                             decoration: InputDecoration(
                               focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white,width: 2)),
-                              hintStyle: TextStyle(fontSize: 19, color: Colors.white60),
+                              hintStyle: TextStyle(fontSize: 19, color: Colors.white70),
                                 hintText: 'Password',
                                 suffix: InkWell(
                                   onTap: _togglePasswordView,
@@ -89,12 +90,21 @@ class _LoginState extends State<Login> {
                           SizedBox(height: 20),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                              elevation: 5
                             ),
                               onPressed: ()async{
-                                await AuthService().signInWithEmailAndPassword(_email!, _password!);
+                              if(_formKey.currentState!.validate()) {
+                                await AuthService().signInWithEmailAndPassword(
+                                    _email!, _password!);
+                              }
                               },
-                              child: Text('Login')
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 12),
+                                child: Text('Login',style: TextStyle(fontSize: 15),),
+                              )
                           ),
+
                           SizedBox(height: 10),
 
                           ///Adding the OR with horizontal line on each side
@@ -170,6 +180,7 @@ class _LoginState extends State<Login> {
                               },
                               child: Text('Create new Account')
                           ),
+                          SizedBox(height: height*0.021,)
                         ],
                       ),
                     ),
