@@ -78,7 +78,7 @@ class _ChatState extends State<Chat> {
                       else
                         print('Message body is empty');
                    },
-                      child: Icon(Icons.send),),
+                      child: Icon(Icons.send,color: Colors.white,),),
                  )
                 ],
               ),

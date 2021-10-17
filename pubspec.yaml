@@ -43,6 +43,16 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  flutter_native_splash: ^1.2.1
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/splash_screen_final1.png
+  android: true
+  ios: true
+  android_gravity: fill
+  ios_content_mode: scaleAspectFill
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

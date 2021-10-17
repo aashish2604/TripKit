@@ -31,7 +31,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         bool isLoaded= snapshot.hasData;
         return isLoaded?Drawer(
           child: Material(
-            color: Color.fromRGBO(45, 64, 184, 1),
+            color: Color.fromRGBO(193, 108, 6, 1.0),
             child: ListView(
               children: [
                 SizedBox(height: height*0.01),
@@ -52,6 +52,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                       children: [
                         CircleAvatar(
                           radius: width*0.1,
+                          backgroundColor: Colors.brown,
                         ),
                         SizedBox(width: width*0.04),
                         Column(
@@ -69,7 +70,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 SizedBox(height: height*0.01),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
-                  child: Divider(color: Colors.indigo,thickness: 1.2,),
+                  child: Divider(color: Colors.brown,thickness: 1.2,),
                 ),
                 //MyPlans
                 ListTile(

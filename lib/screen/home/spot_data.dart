@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:trip_kit/services/database.dart';
+import 'package:trip_kit/services/loading.dart';
+import 'package:trip_kit/services/map_services/country_map.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SpotData extends StatefulWidget {
@@ -38,7 +40,7 @@ class _SpotDataState extends State<SpotData> {
   }
 
   void launchURL(String _url) async =>
-      await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
+      await launch(_url);
 
  @override
   void initState(){
@@ -52,7 +54,7 @@ class _SpotDataState extends State<SpotData> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return apiData==null || isliked==null?Text('Loading..'): Scaffold(
+    return apiData==null || isliked==null?Loading(): Scaffold(
       appBar: AppBar(
         title:Text('Location Details'),
         flexibleSpace: Container(
@@ -139,7 +141,13 @@ class _SpotDataState extends State<SpotData> {
                         children: [
                           SizedBox(
                             height: 30,
-                            child: FloatingActionButton(onPressed: (){},
+                            child: FloatingActionButton(onPressed: (){
+                              double lat = apiData!['point']['lat'];
+                              double lon = apiData!['point']['lon'];
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (BuildContext context)=> MapLocation(lat: lat, lon: lon))
+                              );
+                            },
                               backgroundColor: Colors.yellow,
                               child: Icon(Icons.location_on,color: Colors.redAccent,)),
                           ),

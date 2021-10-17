@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:trip_kit/screen/home/spot_data.dart';
+import 'package:trip_kit/services/loading.dart';
 
 class SpotList extends StatefulWidget {
   final String name;
@@ -53,7 +54,7 @@ class _SpotListState extends State<SpotList> {
           ),
           title: Text('Famous places in ${widget.name}'),
         ),
-        body: apiData==null? Center(child: Text('Loading...'),): ListView.builder(
+        body: apiData==null? Loading(): ListView.builder(
             itemCount: apiData!.length,
             itemBuilder: (BuildContext context, int index){
               return Card(

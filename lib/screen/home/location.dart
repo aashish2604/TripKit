@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trip_kit/model/countryList_model.dart';
 import 'package:trip_kit/api/countryList_api.dart';
-import 'package:trip_kit/services/map_services/country_map.dart';
 
 class Location extends StatefulWidget {
   const Location({Key? key}) : super(key: key);
@@ -78,9 +77,7 @@ class _LocationState extends State<Location> {
             title: Text(country.name),
             subtitle: Text('country code: ${country.code}'),
             onTap: (){
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (BuildContext context) => CountryMap())
-              );
+
             },
           ),
         );

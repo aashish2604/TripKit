@@ -54,7 +54,7 @@ class _TravelListState extends State<TravelList> {
                     MaterialPageRoute(builder: (BuildContext context) => Organiser())
                   );
                 },
-                    label: Text('Plan yourself'),
+                    label: Text('Plan yourself',style: TextStyle(color: Colors.white),),
               ),
             );
           }
