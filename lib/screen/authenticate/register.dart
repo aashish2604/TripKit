@@ -41,10 +41,12 @@ class _RegisterState extends State<Register> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    return loading? Loading(): Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/auth.jpg'),fit: BoxFit.fill)),
+    return loading? Loading():
+    Container(
+      decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/auth.jpg'),fit: BoxFit.fill)),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SingleChildScrollView(
           child: Padding(
             padding:  EdgeInsets.fromLTRB(width*0.05,30,width*0.05,0),
             child: Form(
@@ -52,7 +54,7 @@ class _RegisterState extends State<Register> {
                 child: Column(
                   children: [
                     SizedBox(height: height*0.32),
-                    Text('Register',style: TextStyle(fontSize: 30,color: Colors.black),),
+                    Text('REGISTER',style: TextStyle(fontSize: 30,color: Color(0xFF4B2711),fontFamily: "DancingScript",fontWeight: FontWeight.bold),),
                     SizedBox(height: height*0.01),
                     TextFormField(
                       validator: (val)=>val!.isEmpty?'This is a required field': null,
@@ -219,7 +221,6 @@ class _RegisterState extends State<Register> {
                         },
                         child: Text('Sign In')
                     ),
-                    SizedBox(height: height*0.0235),
                   ],
                 )
 

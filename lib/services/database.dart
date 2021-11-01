@@ -8,7 +8,7 @@ class Database{
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   // making database for newly registered users
-  Future? createInitialData(double contactNumber,String country,String dob,String gender,String name,String state)async{
+  Future? createInitialData(double contactNumber,String country,String dob,String gender,String name,String state,String image)async{
 
     User? user = auth.currentUser;
     String uid = user!.uid;
@@ -19,6 +19,7 @@ class Database{
         'gender': gender,
         'name': name,
         'state': state,
+        'image': image,
       });
   }
 

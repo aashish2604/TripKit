@@ -29,7 +29,7 @@ class _MapState extends State<MapLocation> {
       ),
       body: SafeArea(
           child: GoogleMap(
-            mapType: MapType.normal,
+            mapType: MapType.satellite,
               initialCameraPosition: CameraPosition(
               target: LatLng(widget.lat, widget.lon),
               zoom: 15,

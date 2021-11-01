@@ -51,6 +51,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                     child: Row(
                       children: [
                         CircleAvatar(
+                          backgroundImage: AssetImage("assets/images/${snapshot.data.get('image')}"),
                           radius: width*0.1,
                           backgroundColor: Colors.brown,
                         ),

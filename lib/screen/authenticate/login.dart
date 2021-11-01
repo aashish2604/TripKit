@@ -29,10 +29,11 @@ class _LoginState extends State<Login> {
     double width=MediaQuery.of(context).size.width;
     double height=MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/auth.jpg'),fit: BoxFit.fill)),
+    return Container(
+      decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/auth.jpg'),fit: BoxFit.fill)),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.fromLTRB(width*0.05,30,width*0.05,0),
             child: Form(
@@ -45,7 +46,7 @@ class _LoginState extends State<Login> {
                     Container(
                       child: Column(
                         children: [
-                          Text('LOGIN',style: TextStyle(fontSize: 30,color: Colors.black),),
+                          Text('LOGIN',style: TextStyle(fontWeight: FontWeight.bold,fontFamily: "DancingScript",fontSize: 30,color: Color(0xFF4B2711)),),
                           SizedBox(height: height*0.01),
                           TextFormField(
                             validator: (val)=>val!.isEmpty?'Enter email':null,
@@ -180,7 +181,6 @@ class _LoginState extends State<Login> {
                               },
                               child: Text('Create new Account')
                           ),
-                          SizedBox(height: height*0.021,)
                         ],
                       ),
                     ),
