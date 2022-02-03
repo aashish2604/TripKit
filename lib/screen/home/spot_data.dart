@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:trip_kit/services/database.dart';
 import 'package:trip_kit/services/loading.dart';
-import 'package:trip_kit/services/map_services/country_map.dart';
+import 'package:trip_kit/services/map_services/map_location.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SpotData extends StatefulWidget {
@@ -134,7 +134,7 @@ class _SpotDataState extends State<SpotData> {
                     children: [
                       Expanded(
                           child: Text(apiData!['name'],
-                            style: TextStyle(color: Colors.white,fontSize: 25),overflow: TextOverflow.ellipsis,
+                            style: TextStyle(color: Colors.white,fontSize: height*0.025),overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                           )),
                       Row(
@@ -144,8 +144,9 @@ class _SpotDataState extends State<SpotData> {
                             child: FloatingActionButton(onPressed: (){
                               double lat = apiData!['point']['lat'];
                               double lon = apiData!['point']['lon'];
+                              String spotName = apiData!['name'];
                               Navigator.push(context,
-                                  MaterialPageRoute(builder: (BuildContext context)=> MapLocation(lat: lat, lon: lon))
+                                  MaterialPageRoute(builder: (BuildContext context)=> MapLocation(lat: lat, lon: lon,spotName: spotName,))
                               );
                             },
                               backgroundColor: Colors.yellow,
