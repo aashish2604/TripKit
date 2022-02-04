@@ -109,70 +109,70 @@ class _LoginState extends State<Login> {
                           SizedBox(height: 10),
 
                           ///Adding the OR with horizontal line on each side
-                          Row(children: <Widget>[
-                            Expanded(
-                              child: new Container(
-                                  margin: const EdgeInsets.only(left: 10.0, right: 15.0),
-                                  child: Divider(
-                                    color: Colors.white70,
-                                    height: 50,
-                                  )),
-                            ),
-
-                            Text("Or Sign In using",style: TextStyle( color: Colors.white70),),
-
-                            Expanded(
-                              child: new Container(
-                                  margin: const EdgeInsets.only(left: 15.0, right: 10.0),
-                                  child: Divider(
-                                    color: Colors.white70,
-                                    height: 50,
-                                  )),
-                            ),
-                          ]
-                  ),
-                          SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              ElevatedButton.icon(
-                                icon: Icon(Icons.email_outlined,color: Colors.white,),
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Colors.red,
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))
-                                  ),
-                                  onPressed: (){
-                                    print('Login using gmail account');
-                                  },
-                                  label: Text('Gmail',style: TextStyle(color: Colors.white)),
-                              ),
-                              SizedBox(width: 10),
-                              ElevatedButton.icon(
-                                icon: Icon(Icons.facebook_rounded,color: Colors.white,),
-                                style: ElevatedButton.styleFrom(
-                                    primary: Colors.blue,
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))
-                                ),
-                                onPressed: (){
-                                  print('Login using facebook account');
-                                },
-                                label: Text('Facebook',style: TextStyle(color: Colors.white)),
-                              ),
-                              SizedBox(width: 10),
-                              ElevatedButton.icon(
-                                icon: Icon(Icons.map,color: Colors.white,),
-                                style: ElevatedButton.styleFrom(
-                                    primary: Colors.blue,
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))
-                                ),
-                                onPressed: (){
-                                  print('Login using twitter account');
-                                },
-                                label: Text('Twitter',style: TextStyle(color: Colors.white)),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: height*0.04),
+                  //         Row(children: <Widget>[
+                  //           Expanded(
+                  //             child: new Container(
+                  //                 margin: const EdgeInsets.only(left: 10.0, right: 15.0),
+                  //                 child: Divider(
+                  //                   color: Colors.white70,
+                  //                   height: 50,
+                  //                 )),
+                  //           ),
+                  //
+                  //           Text("Or Sign In using",style: TextStyle( color: Colors.white70),),
+                  //
+                  //           Expanded(
+                  //             child: new Container(
+                  //                 margin: const EdgeInsets.only(left: 15.0, right: 10.0),
+                  //                 child: Divider(
+                  //                   color: Colors.white70,
+                  //                   height: 50,
+                  //                 )),
+                  //           ),
+                  //         ]
+                  // ),
+                  //         SizedBox(height: 20),
+                  //         Row(
+                  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //           children: [
+                  //             ElevatedButton.icon(
+                  //               icon: Icon(Icons.email_outlined,color: Colors.white,),
+                  //                 style: ElevatedButton.styleFrom(
+                  //                   primary: Colors.red,
+                  //                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))
+                  //                 ),
+                  //                 onPressed: (){
+                  //                   print('Login using gmail account');
+                  //                 },
+                  //                 label: Text('Gmail',style: TextStyle(color: Colors.white)),
+                  //             ),
+                  //             SizedBox(width: 10),
+                  //             ElevatedButton.icon(
+                  //               icon: Icon(Icons.facebook_rounded,color: Colors.white,),
+                  //               style: ElevatedButton.styleFrom(
+                  //                   primary: Colors.blue,
+                  //                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))
+                  //               ),
+                  //               onPressed: (){
+                  //                 print('Login using facebook account');
+                  //               },
+                  //               label: Text('Facebook',style: TextStyle(color: Colors.white)),
+                  //             ),
+                  //             SizedBox(width: 10),
+                  //             ElevatedButton.icon(
+                  //               icon: Icon(Icons.map,color: Colors.white,),
+                  //               style: ElevatedButton.styleFrom(
+                  //                   primary: Colors.blue,
+                  //                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))
+                  //               ),
+                  //               onPressed: (){
+                  //                 print('Login using twitter account');
+                  //               },
+                  //               label: Text('Twitter',style: TextStyle(color: Colors.white)),
+                  //             ),
+                  //           ],
+                  //         ),
+                          SizedBox(height: height*0.08),
                           Text('New User? Register',style: TextStyle( color: Colors.white70),),
                           SizedBox(height: 5),
                           ElevatedButton(
