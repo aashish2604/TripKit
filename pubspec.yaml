@@ -43,6 +43,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  flutter_launcher_icons: "^0.9.2"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/launcher_icon.png"
+
   flutter_native_splash: ^2.0.1+1
 
 flutter_native_splash:
