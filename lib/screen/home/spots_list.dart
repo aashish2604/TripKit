@@ -1,14 +1,14 @@
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:trip_kit/screen/home/spot_data.dart';
+import 'package:trip_kit/secrets/keys.dart';
 import 'package:trip_kit/services/loading.dart';
 
 class SpotList extends StatefulWidget {
   final String name;
-  final double lon,lat,radius;
+  final double lon, lat, radius;
 
   const SpotList({
     Key? key,
@@ -23,11 +23,11 @@ class SpotList extends StatefulWidget {
 }
 
 class _SpotListState extends State<SpotList> {
-
   List? apiData;
 
-  Future getApiData()async{
-    var data =await http.get(Uri.parse("https://api.opentripmap.com/0.1/en/places/radius?radius=${widget.radius}&lon=${widget.lon}&lat=${widget.lat}&kinds=interesting_places&rate=3&format=json&apikey=5ae2e3f221c38a28845f05b644e948b7e92a371bc9622916ba1f0e95"));
+  Future getApiData() async {
+    var data = await http.get(Uri.parse(
+        "https://api.opentripmap.com/0.1/en/places/radius?radius=${widget.radius}&lon=${widget.lon}&lat=${widget.lat}&kinds=interesting_places&rate=3&format=json&apikey=$kOpenTripMapApiKey"));
     setState(() {
       apiData = jsonDecode(data.body);
     });
@@ -46,7 +46,7 @@ class _SpotListState extends State<SpotList> {
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.red,Colors.orange],
+                colors: [Colors.red, Colors.orange],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -54,23 +54,24 @@ class _SpotListState extends State<SpotList> {
           ),
           title: Text('Famous places in ${widget.name}'),
         ),
-        body: apiData==null? Loading(): ListView.builder(
-            itemCount: apiData!.length,
-            itemBuilder: (BuildContext context, int index){
-              return Card(
-                child: ListTile(
-                  title: Text(apiData![index]['name']),
-                  subtitle: Text('Rating: ${apiData![index]['rate']}'),
-                  onTap: (){
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (BuildContext context)=> SpotData(xid: apiData![index]['xid']))
-                    );
-                  },
-                ),
-              );
-
-            }
-        )
-    );
+        body: apiData == null
+            ? Loading()
+            : ListView.builder(
+                itemCount: apiData!.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(apiData![index]['name']),
+                      subtitle: Text('Rating: ${apiData![index]['rate']}'),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    SpotData(xid: apiData![index]['xid'])));
+                      },
+                    ),
+                  );
+                }));
   }
 }

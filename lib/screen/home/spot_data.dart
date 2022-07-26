@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:trip_kit/secrets/keys.dart';
 import 'package:trip_kit/services/database.dart';
 import 'package:trip_kit/services/loading.dart';
 import 'package:trip_kit/services/map_services/map_location.dart';
@@ -23,7 +24,7 @@ class _SpotDataState extends State<SpotData> {
 
   Future getApiData() async {
     var data = await http.get(Uri.parse(
-        "https://api.opentripmap.com/0.1/en/places/xid/${widget.xid}?apikey=5ae2e3f221c38a28845f05b644e948b7e92a371bc9622916ba1f0e95"));
+        "https://api.opentripmap.com/0.1/en/places/xid/${widget.xid}?apikey=$kOpenTripMapApiKey"));
     setState(() {
       apiData = jsonDecode(data.body);
     });
@@ -43,7 +44,7 @@ class _SpotDataState extends State<SpotData> {
     String? city = apiData!['address']['city'] ?? '';
     String? state = apiData!['address']['state'] ?? '';
     String? postcode = apiData!['address']['postcode'] ?? '';
-    return Expanded(child: Text('$suburb, $city, $state-$postcode.'));
+    return Expanded(child: Text('$suburb $city $state-$postcode.'));
   }
 
   void launchURL(String _url) async => await launch(_url);
@@ -88,8 +89,9 @@ class _SpotDataState extends State<SpotData> {
                         height: height * 0.5,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image:
-                                    NetworkImage(apiData!['preview']['source']),
+                                image: NetworkImage(apiData != null
+                                    ? apiData!['preview']['source']
+                                    : 'https://commons.wikimedia.org/wiki/File:No-Image-Placeholder.svg#/media/File:No-Image-Placeholder.svg'),
                                 fit: BoxFit.fill)),
                       ),
 
