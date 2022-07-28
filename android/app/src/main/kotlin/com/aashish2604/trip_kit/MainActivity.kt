@@ -1,4 +1,4 @@
-package com.example.trip_kit
+package com.aashish2604.trip_kit
 
 import io.flutter.embedding.android.FlutterActivity
 

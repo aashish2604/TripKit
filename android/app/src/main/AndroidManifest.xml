@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.trip_kit">
+    package="com.aashish2604.trip_kit">
    <application
         android:label="Trip Kit"
         android:icon="@mipmap/ic_launcher">
