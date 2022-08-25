@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:trip_kit/screen/navigation/view_plans.dart';
 import 'package:trip_kit/services/auth.dart';
 import 'package:trip_kit/services/database.dart';
 
@@ -19,79 +20,98 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     User? user = FirebaseAuth.instance.currentUser;
     String uid = user!.uid;
 
-    Widget text(AsyncSnapshot snapshots){
+    Widget text(AsyncSnapshot snapshots) {
       String _name = snapshots.data.get('name');
-      return Text(_name,style: TextStyle(fontSize:20 ,color: Colors.white));
-
+      return Text(_name, style: TextStyle(fontSize: 20, color: Colors.white));
     }
 
     return StreamBuilder<DocumentSnapshot>(
-      stream: FirebaseFirestore.instance.collection('users').doc(uid).snapshots(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        bool isLoaded= snapshot.hasData;
-        return isLoaded?Drawer(
-          child: Material(
-            color: Color.fromRGBO(193, 108, 6, 1.0),
-            child: ListView(
-              children: [
-                SizedBox(height: height*0.01),
-
-                //title
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
-                  child: Text('Trip Kit',style: TextStyle(fontSize: 25,color: Colors.white)),
-                ),
-                SizedBox(height: height*0.03),
-
-                //Profile
-                InkWell(
-                  onTap: (){},
-                  child:Container(
-                    margin: EdgeInsets.symmetric(horizontal: 15),
-                    child: Row(
+        stream:
+            FirebaseFirestore.instance.collection('users').doc(uid).snapshots(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          bool isLoaded = snapshot.hasData;
+          return isLoaded
+              ? Drawer(
+                  child: Material(
+                    color: Color.fromRGBO(193, 108, 6, 1.0),
+                    child: ListView(
                       children: [
-                        CircleAvatar(
-                          backgroundImage: AssetImage("assets/images/${snapshot.data.get('image')}"),
-                          radius: width*0.1,
-                          backgroundColor: Colors.brown,
+                        SizedBox(height: height * 0.01),
+
+                        //title
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
+                          child: Text('Trip Kit',
+                              style:
+                                  TextStyle(fontSize: 25, color: Colors.white)),
                         ),
-                        SizedBox(width: width*0.04),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            text(snapshot),
-                            SizedBox(height: 5),
-                            Text('${user.email}',style: TextStyle(color: Colors.grey)),
-                          ],
+                        SizedBox(height: height * 0.03),
+
+                        //Profile
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage: AssetImage(
+                                      "assets/images/${snapshot.data.get('image')}"),
+                                  radius: width * 0.1,
+                                  backgroundColor: Colors.brown,
+                                ),
+                                SizedBox(width: width * 0.04),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    text(snapshot),
+                                    SizedBox(height: 5),
+                                    Text('${user.email}',
+                                        style: TextStyle(color: Colors.grey)),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
+                        SizedBox(height: height * 0.01),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 8),
+                          child: Divider(
+                            color: Colors.brown,
+                            thickness: 1.2,
+                          ),
+                        ),
+                        //MyPlans
+                        ListTile(
+                          leading: Icon(Icons.assignment, color: Colors.white),
+                          title: Text(
+                            'My plans',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ViewPlans()));
+                          },
+                        ),
+
+                        //SignOut
+                        SizedBox(height: height * 0.01),
+                        ListTile(
+                          leading: Icon(Icons.power_settings_new,
+                              color: Colors.white),
+                          title: Text(
+                            'Sign Out',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          onTap: () => AuthService().signOut(),
+                        )
                       ],
                     ),
                   ),
-                ),
-                SizedBox(height: height*0.01),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
-                  child: Divider(color: Colors.brown,thickness: 1.2,),
-                ),
-                //MyPlans
-                ListTile(
-                  leading: Icon(Icons.assignment,color: Colors.white),
-                  title: Text('My plans',style: TextStyle(color: Colors.white),),
-                  onTap: (){},
-                ),
-
-                //SignOut
-                SizedBox(height: height*0.01),
-                ListTile(
-                  leading: Icon(Icons.power_settings_new,color: Colors.white),
-                  title: Text('Sign Out',style: TextStyle(color: Colors.white),),
-                  onTap: ()=> AuthService().signOut(),
                 )
-              ],
-            ),
-          ),
-        ):Text('Loading');
-      }
-    );
+              : Text('Loading');
+        });
   }
 }
